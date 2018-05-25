@@ -1,0 +1,93 @@
+body{
+    background-image: url("../images/back.jpg");
+}
+.container {
+    background-color: #daece2;
+    padding: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 0px 23px -1px rgba(69,69,69,1);
+    -moz-box-shadow: 0px 0px 23px -1px rgba(69,69,69,1);
+    box-shadow: 0px 0px 23px -1px rgba(69,69,69,1);
+}
+.head {
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 10px;
+}
+.btn-outline-secondary:hover {
+    background-color: #343a40;
+}
+h1, h2 {
+    color: white;
+}
+textarea {
+    resize: none;
+}
+
+.gov_person {
+    background-color: #e8ecea;
+}
+
+/* TABLE */
+.table {
+    padding: 10px 50px 50px 50px;
+    margin-left: 50px;
+}
+
+table {
+    /*font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;*/
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #e8ecea;
+    color: #343a40;
+    border: 16px solid #d5d9d7;
+    border-radius: 20px;
+}
+
+th {
+    font-size: 18px;
+    padding: 10px;
+}
+
+td {
+    background: #d9d2c7;
+    padding: 10px;
+}
+
+
+.btn_statement {
+    background-color: #4e633e;
+    border-color: #4e633e;
+
+}
+
+.btn_statement:hover {
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.btn_modify {
+    background-color: #634936;
+    border-color: #634936;
+}
+
+.btn_delete {
+    background-color: #633032;
+    border-color: #633032;
+}
+
+.carousel-item {
+    height: 100vh;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+    text-decoration: none;
+}

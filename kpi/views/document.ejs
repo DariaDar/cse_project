@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Увійти</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='./stylesheets/main.css' />
+</head>
+<body>
+<% include ../views/layout.ejs%>
+
+<div class="container">
+
+    <div class="row justify-content-md-center">
+        <div class="col-lg">
+            <div class="head">
+                <h1>Подати заяву на реєстрацію друкованого ЗМІ</h1>
+            </div>
+
+            <div class="form">
+                <form role="form" autocomplete="off" id="loginForm" action="/registration" method="POST">
+
+
+                    <!--АВТОЗАПОЛНЕНИЕ-->
+
+                    <hr>
+                    <h4>1. Засновник видання</h4>
+                    <div class="gov_button">
+                        <button type="button" class="btn btn-outline-secondary">Юридична особа</button>
+                    </div>
+                    <div class="gov_person">
+                        <hr>
+                        <h5>Дані підприємства</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="company_name" placeholder="Назва">
+                            </div>
+                            <div class="col-4">
+                                <input type="number" class="form-control" name="company_number"
+                                       placeholder="Ідентифікаційний код">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Адреса підприємства</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="country" placeholder="Країна">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="region" placeholder="Область">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="locality" placeholder="Населений пункт">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="street" placeholder="Вулиця">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="building" placeholder="Будинок">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Дані засновника підприємства</h5>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="leader_surname" placeholder="Прізвище">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="leader_name" placeholder="Ім'я">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" name="leader_parent_name"
+                                       placeholder="По батькові">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Електронна адреса</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="email" class="form-control" name="leader_email" id="lgFormGroupInput"
+                                       placeholder="you@example.com">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Банківські реквізити</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Номер картки</label>
+                            </div>
+                            <div class="bank_form col-4">
+                                <input name="cardcode" type="number" class="form-control"
+                                       pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}"
+                                       placeholder="XXXX XXXX XXXX XXXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Ім'я власника</label>
+                            </div>
+                            <div class="col-4">
+                                <input pattern="^[a-zA-Z]+$" class="form-control"
+                                       placeholder="leader_card_name">
+                            </div>
+                            <div class="col-4">
+                                <input pattern="[A-Za-z]*" class="form-control"
+                                       placeholder="leader_card_surname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">СVC-код</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="password" name="leader_cvc" pattern="[0-9]{3}" class="form-control"
+                                       placeholder="XXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Кінцева дата</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="text" name="cvc_mm" pattern="[0-9]{2}" class="form-control"
+                                       placeholder="MM">
+                            </div>
+                            <div class="col-2">
+                                <input type="text" name="cvc_yy" pattern="[0-9]{2}" class="form-control"
+                                       placeholder="YY">
+                            </div>
+                        </div>
+                        <hr>
+
+                    </div>
+
+
+                    <div class="physical_button">
+                        <button type="button" class="btn btn-outline-secondary">Фізична особа</button>
+                    </div>
+                    <div class="physical_person">
+                        <h5>Ім'я засновника</h5>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <input type="text" name="person_surname" class="form-control" placeholder="Прізвище">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="person_name" class="form-control" placeholder="Ім'я">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="person_parent_name" class="form-control"
+                                       placeholder="По батькові">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Паспортні дані</h5>
+                        <div class="form-group row">
+
+                            <div class="col-2">
+                                <input type="text" name="passport_series" class="form-control" placeholder="Cерія">
+                            </div>
+                            <div class="col-4 offset-2">
+                                <input type="number" name="passport_number" class="form-control" placeholder="Номер">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Ідентифікаційний код</h5>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <input type="number" name="person_number" class="form-control" placeholder="Номер">
+                            </div>
+                        </div>
+                        <hr>
+
+                        <h5>Адреса засновника</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <input type="text" name="person_country" class="form-control" placeholder="Країна">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="person_region" class="form-control" placeholder="Область">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="person_locality" class="form-control"
+                                       placeholder="Населений пункт">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-4">
+                                <input type="text" name="person_street" class="form-control" placeholder="Вулиця">
+                            </div>
+                            <div class="col-4">
+                                <input type="text" name="person_building" class="form-control" placeholder="Будинок">
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Електронна адреса</label>
+                            </div>
+                            <div class="col-4">
+                                <input type="email" class="form-control" name="person_email" id="person_email"
+                                       placeholder="you@example.com">
+                            </div>
+                        </div>
+                        <hr>
+                        <h5>Банківські реквізити</h5>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Номер картки</label>
+                            </div>
+                            <div class="bank_form col-4">
+                                <input name="person_cardcode" type="number" class="form-control"
+                                       pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}"
+                                       placeholder="XXXX XXXX XXXX XXXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Ім'я власника</label>
+                            </div>
+                            <div class="col-4">
+                                <input pattern="^[a-zA-Z]+$" name="person_card_name" class="form-control"
+                                       placeholder="Name">
+                            </div>
+                            <div class="col-4">
+                                <input pattern="[A-Za-z]*" name="person_card_surname" class="form-control"
+                                       placeholder="Surname">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">СVC-код</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="password" name="cvc" pattern="[0-9]{3}" class="form-control" placeholder="XXX">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="mr-sm-2">Кінцева дата</label>
+                            </div>
+                            <div class="col-2">
+                                <input type="text" name="cvc_mm" pattern="[0-9]{2}" class="form-control"
+                                       placeholder="MM">
+                            </div>
+                            <div class="col-2">
+                                <input type="text" name="cvc__yy" pattern="[0-9]{2}" class="form-control"
+                                       placeholder="YY">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <h4>2. Вид видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="media_type" pattern="^[А-Яа-яЁё\s]+$" class="form-control"
+                                   required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>3. Назва видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="media_name" pattern="^[А-Яа-яЇї\s]+$" class="form-control" required
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>4. Мова видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="language" pattern="^[А-Яа-яЇї\s]+$" class="form-control"
+                                   placeholder="" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>Сфера розповсюдження та категорії читачів</h4>
+                    <div class="form-group row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Cфера розповсюдження</label>
+                                </div>
+                                <div class="col-5">
+                                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="sphere"
+                                            id="inlineFormCustomSelect">
+                                        <option selected value="local">Місцева</option>
+                                        <option value="region">Регіональна</option>
+                                        <option value="nation">Загальнодержавна</option>
+                                        <option value="overseas">Зарубіжна</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" name="readers_category" pattern="^[А-Яа-яЇї\s]+$"
+                                   placeholder="Категорії читачів" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>5. Програмні цілі.</h4>
+                    <div class="form-group row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Основні принципи</label>
+                                </div>
+                                <div class="col-8 ">
+                                    <textarea class="form-control" name="prinzipy" pattern="^[А-Яа-яЇї\s]+$" rows="4"
+                                              required></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" name="theme" pattern="^[А-Яа-яЇї\s]+$"
+                                   placeholder="Тематична спрямованість" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Періодичність випуску</label>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           value="year" id="year" checked>
+                                    Раз на рік
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           id="month" value="month">
+                                    Раз на місяць
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           id="week" value="week">
+                                    Раз на тиждень
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period" id="day"
+                                           value="day">
+                                    Раз на день
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Формат</label>
+                            <div class="row">
+                                <div class="col-5">
+                                    <!--SIZE-->
+                                    <label>Розмір аркуша</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" name="size_sheet" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Обсяг видання</label>
+                            <input type="text" name="page_count" class="form-control" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>6. Місцезнаходження редакції</h4>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" name="media_country" class="form-control" placeholder="Країна" required>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_region" class="form-control" placeholder="Область" required>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_locality" class="form-control" placeholder="Населений пункт"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <input type="text" name="media_street" class="form-control" placeholder="Вулиця" required>
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_building" class="form-control" placeholder="Будинок"
+                                   required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3>Прикріпити документ за вимогою реєструючого органу</h3>
+                    <div class="form-group row">
+                        <div class="custom-file col-12">
+                            <input type="file" name="document" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Оберіть файл</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row justify-content-center">
+                        <button type="submit" id="btn_document" class="btn btn-success">Подати заяву</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script src="./javascripts/index.js"></script>
+
+</body>
+</html>

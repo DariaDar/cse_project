@@ -1,0 +1,12 @@
+.container {
+    margin-top: 30vh;
+}
+
+.or {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+body {
+    background-image: url("../images/back.jpg");
+}
