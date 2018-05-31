@@ -2,68 +2,189 @@
 <html>
 <head>
     <title>Увійти</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
 
-    <link rel='stylesheet' href='./stylesheets/main.css' />
+    <link rel='stylesheet' href='/stylesheets/main.css'/>
 </head>
 
 <body>
-<% include ../views/layout.ejs%>
+<% include ../views/layout.ejs %>
 
 <div class="container">
 
     <div class="profile">
-        <div class="data">
+        <div class="data gov_person">
             <div class="head">
+                <% if(user2.type == "gov") { %>
+                <h2 class="text-center">Дані підприємства та його засновника</h2>
+                <% } else { %>
                 <h2 class="text-center">Персональні дані</h2>
+                <% } %>
             </div>
-
             <hr>
             <div class="row">
-
-            </div>
-        </div>
-        <hr>
-        <div class="documents">
-            <div class="head">
-                <h2 class="text-center">Подані заяви</h2>
+                <div class="col">
+                    <% if(user2.type == "gov") { %>
+                    <h3>"<%= person.company_name %>"</h3>
+                    <% } else { %>
+                    <h3><%= person.surname %> <%= person.first_name %> <%= person.parent_name %></h3>
+                    <% } %>
+                </div>
             </div>
             <hr>
-            <div class="document">
-                <div class="offset-3">
-                    <table>
+            <% if(user2.type == "gov") { %>
+            <h5>Ідентифікаційний код</h5>
+            <div class="form-group row">
+                <div class="col-4">
+                    <%= person.company_number %>
+                </div>
+            </div>
+            <hr>
 
-                        <tr>
-                            <th>ID заяви</th>
-                            <th>Дата</th>
-                            <th>Статус</th>
-                        </tr>
-                        {% for entity in facts %}
-                        <tr>
-                            <td>{{ entity.0 }}</td>
-                            <td>
-                                {{ entity.1 }}
-                            </td>
-                            <td>{{ entity.2 }}</td>
-                            <td><form method="POST">
-                                <input type="hidden" name="id" value="{{ entity.0 }}">
-                                <input type="submit" class="btn btn-success btn_statement" value="Перейти до заяви"></form>
-                            </td>
-                        </tr>
-                        {% endfor %}
+            <% } else { %>
+            <h5>Паспортні дані</h5>
+            <div class="row">
+                <div class="col-2">
+                    <%= person.passport_series %>
+                </div>
+                <div class="col-2">
+                    <%= person.passport_number %>
+                </div>
+            </div>
+            <hr>
+            <h5>Ідентифікаційний код</h5>
+            <div class="form-group row">
+                <div class="col-4">
+                    <%= person.person_number %>
+                </div>
+            </div>
+            <hr>
+            <% } %>
 
-                    </table>
+            <% if(user2.type == "gov") { %>
+            <h5>Адреса підприємства</h5>
+            <% } else { %>
+            <h5>Адреса засновника</h5>
+            <% } %>
+
+            <p><b>Країна: </b> <%= address.country %><br><b>Область: </b> <%= address.region %> <br><b>Населений
+                    пункт: </b> <%= address.locality %>
+                <br><b>Вулиця: </b> <%= address.street %> <%= address.building %></p>
+            <hr>
+            <% if(user2.type == "gov") { %>
+            <h3  class="text-center">Дані засновника підприємства</h3>
+            <br>
+            <h4 class="text-center">Персональні дані</h4>
+            <hr>
+            <div class="row">
+                <div class="col-4">
+                    <label class="mr-sm-2">Повне ім'я: </label>
+                </div>
+                <div class="col-6">
+                    <h4><%= person.leader_surname %> <%= person.leader_name %> <%= person.leader_parentname %></h4>
+                </div>
+            </div>
+
+            <% } %>
+            <div class="row">
+                <div class="col-4">
+                    <label class="mr-sm-2">Електронна адреса</label>
+                </div>
+                <div class="col-4">
+                    <% if(user2.type == "gov") { %>
+                    <%= person.leader_email %>
+                    <% } else { %>
+                    <%= person.email %>
+                    <% } %>
+                </div>
+            </div>
+            <hr>
+            <h5>Банківські реквізити</h5>
+            <div class="row">
+                <div class="col-4">
+                    <label class="mr-sm-2">Номер картки</label>
+                </div>
+                <div class="bank_form col-4">
+                    <%= bank.card_number %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <label class="mr-sm-2">Ім'я власника</label>
+                </div>
+                <div class="col-4">
+                    <%= bank.owner_name %>
+                </div>
+                <div class="col-4">
+                    <%= bank.owner_surname %>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label class="mr-sm-2">Кінцева дата</label>
+                </div>
+                <div class="col-2">
+                    <%= bank.date_month %>
+                </div>
+                <div class="col-2">
+                    <%= bank.date_year %>
                 </div>
             </div>
         </div>
-
     </div>
 
 
+    <hr>
+    <div class="documents">
+        <div class="head">
+            <h2 class="text-center">Подані заяви</h2>
+        </div>
+        <hr>
+        <div class="document">
+            <div class="col">
+                <% if(statements.length != 0) {%>
+                <table>
+
+                    <% statements.forEach(function(statement) { %>
+
+                    <tr>
+                        <th>ID заяви</th>
+                        <th>Дата</th>
+                        <th>Назва</th>
+                        <th>Статус</th>
+                    </tr>
+
+                    <tr>
+                        <td><%= statement._id %></td>
+                        <td>
+                            <%= statement.start_reg_date %>
+                        </td>
+                        <td>
+                            <%= statement.name %>
+                        </td>
+                        <td><b><%= statement.status %></b></td>
+                        <td>
+                            <form method="get" action="/document/<%= statement._id %>">
+                                <input type="submit" class="btn btn-success btn_statement" value="Перейти до заяви">
+                            </form>
+                        </td>
+                    </tr>
+                    <% }); %>
+
+                </table>
+                <% } else {%>
+                <h2 class="text-center" style="color: black">Немає поданих заяв.</h2>
+                <%}%>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

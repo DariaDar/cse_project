@@ -37,7 +37,7 @@ textarea {
 
 table {
     /*font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;*/
-    text-align: left;
+    text-align: center;
     border-collapse: separate;
     border-spacing: 5px;
     background: #e8ecea;
@@ -90,4 +90,26 @@ a {
 a:hover {
     color: white;
     text-decoration: none;
+}
+
+.search_form {
+    background-color: #e8ecea;
+    border: 5px solid #d5d9d7;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.offer__title {
+    font-size: 32px;
+    margin-bottom: 6px;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.offer__text {
+    font-size: 16px;
+    margin-top: 15px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    background-color: #e8ecea;
+    border-radius: 10px;
 }

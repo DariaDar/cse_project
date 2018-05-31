@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Увійти</title>
+    <title>Зареєструватись</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
@@ -10,7 +10,10 @@
     <link rel='stylesheet' href='./stylesheets/main.css' />
 </head>
 <body>
+
 <% include ../views/layout.ejs%>
+
+
 
 <div class="container">
     <div class="col-lg">
@@ -96,13 +99,13 @@
             <h5>Дані засновника підприємства</h5>
             <div class="form-group row">
                 <div class="col-4">
-                    <input type="text" class="form-control" name="leader_surname" placeholder="Прізвище">
+                    <input type="text" class="form-control" name="leader_surname" placeholder="Прізвище" >
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="leader_name" placeholder="Ім'я">
+                    <input type="text" class="form-control" name="leader_name" placeholder="Ім'я" >
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="leader_parent_name" placeholder="По батькові">
+                    <input type="text" class="form-control" name="leader_parent_name" placeholder="По батькові" >
                 </div>
             </div>
             <hr>
@@ -133,11 +136,11 @@
                 </div>
                 <div class="col-4">
                     <input pattern="^[a-zA-Z]+$" class="form-control"
-                           placeholder="leader_card_name">
+                           name="leader_card_name" placeholder="Name">
                 </div>
                 <div class="col-4">
                     <input pattern="[A-Za-z]*" class="form-control"
-                           placeholder="leader_card_surname">
+                           name="leader_card_surname" placeholder="Surname">
                 </div>
             </div>
             <div class="row">
@@ -193,7 +196,7 @@
                     <input type="text" name="passport_series" class="form-control" placeholder="Cерія">
                 </div>
                 <div class="col-4 offset-2">
-                    <input type="number" name="passport_number" class="form-control" placeholder="Номер">
+                    <input type="number" name="passport_number" pattern="\d{6}" class="form-control" placeholder="XXXXXX">
                 </div>
             </div>
             <hr>
@@ -265,7 +268,7 @@
                     <label class="mr-sm-2">СVC-код</label>
                 </div>
                 <div class="col-2">
-                    <input type="password" name="cvc" pattern="[0-9]{3}" class="form-control" placeholder="XXX">
+                    <input type="password" name="person_cvc" pattern="[0-9]{3}" class="form-control" placeholder="XXX">
                 </div>
             </div>
             <div class="row">
@@ -273,124 +276,124 @@
                     <label class="mr-sm-2">Кінцева дата</label>
                 </div>
                 <div class="col-2">
-                    <input type="text" name="cvc_mm" pattern="[0-9]{2}" class="form-control" placeholder="MM">
+                    <input type="text" name="p_cvc_mm" pattern="[0-9]{2}" class="form-control" placeholder="MM">
                 </div>
                 <div class="col-2">
-                    <input type="text" name="cvc__yy" pattern="[0-9]{2}" class="form-control" placeholder="YY">
+                    <input type="text" name="p_cvc__yy" pattern="[0-9]{2}" class="form-control" placeholder="YY">
                 </div>
             </div>
         </div>
 
-        <div class="gov_button">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="type" id="registry" value="registry">
-                <label class="form-check-label" for="registry">
-                    Реєструючий орган
-                </label>
-            </div>
-        </div>
+        <!--<div class="gov_button">-->
+            <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="radio" name="type" id="registry" value="registry">-->
+                <!--<label class="form-check-label" for="registry">-->
+                    <!--Реєструючий орган-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="gov_person">
-            <hr>
-            <h5>Адреса</h5>
-            <div class="row">
-                <div class="col-4">
-                    <input type="text" name="person_country" class="form-control" placeholder="Країна">
-                </div>
-                <div class="col-4">
-                    <input type="text" name="person_region" class="form-control" placeholder="Область">
-                </div>
-                <div class="col-4">
-                    <input type="text" name="person_locality" class="form-control" placeholder="Населений пункт">
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-4">
-                    <input type="text" name="person_street" class="form-control" placeholder="Вулиця">
-                </div>
-                <div class="col-4">
-                    <input type="text" name="person_building" class="form-control" placeholder="Будинок">
-                </div>
-            </div>
-            <hr>
-            <h5>Тип</h5>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="registry" id="minUst" value="registry">
-                <label class="form-check-label" for="registry">
-                    Міністерство Юстицій
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="registry" id="region" value="registry">
-                <label class="form-check-label" for="registry">
-                    Головний територіальний управляючий орган юстиції
-                </label>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-4">
-                    <label class="mr-sm-2">Електронна адреса</label>
-                </div>
-                <div class="col-4">
-                    <input type="email" class="form-control" name="person_email"
-                           placeholder="you@example.com">
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-4">
-                    <label class="mr-sm-2">Котрольний код</label>
-                </div>
-                <div class="col-4">
-                    <input type="number" class="form-control" name="control_code"
-                           placeholder="XXXXXXXXXXXXXXXX">
-                </div>
-            </div>
+        <!--<div class="gov_person">-->
+            <!--<hr>-->
+            <!--<h5>Адреса</h5>-->
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_country" class="form-control" placeholder="Країна">-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_region" class="form-control" placeholder="Область">-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_locality" class="form-control" placeholder="Населений пункт">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group row">-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_street" class="form-control" placeholder="Вулиця">-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_building" class="form-control" placeholder="Будинок">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<h5>Тип</h5>-->
+            <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="radio" name="registry" id="minUst" value="registry">-->
+                <!--<label class="form-check-label" for="registry">-->
+                    <!--Міністерство Юстицій-->
+                <!--</label>-->
+            <!--</div>-->
+            <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="radio" name="registry" id="region" value="registry">-->
+                <!--<label class="form-check-label" for="registry">-->
+                    <!--Головний територіальний управляючий орган юстиції-->
+                <!--</label>-->
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<label class="mr-sm-2">Електронна адреса</label>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="email" class="form-control" name="person_email"-->
+                           <!--placeholder="you@example.com">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<label class="mr-sm-2">Котрольний код</label>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="number" class="form-control" name="control_code"-->
+                           <!--placeholder="XXXXXXXXXXXXXXXX">-->
+                <!--</div>-->
+            <!--</div>-->
 
-        </div>
+        <!--</div>-->
 
-        <div class="gov_button">
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="type" id="admin" value="admin">
-                <label class="form-check-label" for="registry">
-                    Адміністратор
-                </label>
-            </div>
-        </div>
+        <!--<div class="gov_button">-->
+            <!--<div class="form-check">-->
+                <!--<input class="form-check-input" type="radio" name="type" id="admin" value="admin">-->
+                <!--<label class="form-check-label" for="registry">-->
+                    <!--Адміністратор-->
+                <!--</label>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="gov_person">
-            <h5>Ім'я</h5>
-            <div class="form-group row">
-                <div class="col-4">
-                    <input type="text" name="person_surname" class="form-control" placeholder="Прізвище">
-                </div>
-                <div class="col-4">
-                    <input type="text" name="person_name" class="form-control" placeholder="Ім'я">
-                </div>
-                <div class="col-4">
-                    <input type="text" name="person_parent_name" class="form-control" placeholder="По батькові">
-                </div>
-            </div>
-            <hr>
-            <div class="row">
-                <div class="col-4">
-                    <label class="mr-sm-2">Електронна адреса</label>
-                </div>
-                <div class="col-4">
-                    <input type="email" class="form-control" name="person_email" id=""
-                           placeholder="you@example.com">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-4">
-                    <label class="mr-sm-2">Котрольний код</label>
-                </div>
-                <div class="col-4">
-                    <input type="number" class="form-control" name="control_code_admin"
-                           placeholder="XXXXXXXXXXXXXXXX">
-                </div>
-            </div>
-        </div>
+        <!--<div class="gov_person">-->
+            <!--<h5>Ім'я</h5>-->
+            <!--<div class="form-group row">-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_surname" class="form-control" placeholder="Прізвище">-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_name" class="form-control" placeholder="Ім'я">-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="text" name="person_parent_name" class="form-control" placeholder="По батькові">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<hr>-->
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<label class="mr-sm-2">Електронна адреса</label>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="email" class="form-control" name="person_email" id=""-->
+                           <!--placeholder="you@example.com">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="row">-->
+                <!--<div class="col-4">-->
+                    <!--<label class="mr-sm-2">Котрольний код</label>-->
+                <!--</div>-->
+                <!--<div class="col-4">-->
+                    <!--<input type="number" class="form-control" name="control_code_admin"-->
+                           <!--placeholder="XXXXXXXXXXXXXXXX">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <div class="form-group row justify-content-center">
             <div class="justify-content-md-center">

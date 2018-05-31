@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Державний реєстр</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='./stylesheets/main.css' />
+</head>
+<body>
+
+<div class="container col-6" style="margin-top: 20vh;">
+
+    <div class="head text-center">
+        <h4 style="color: white;">Пошук</h4>
+    </div>
+
+    <form class="search_form" method="POST" action="/getmedia">
+        <hr>
+        <div class="row justify-content-center">
+            <h5>Назва та вид видання</h5>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-10 justify-content-center">
+                <input type="text" class="form-control" name="namesearch" id="namesearch"
+                       placeholder="">
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-10">
+                <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="type"
+                        id="inlineFormCustomSelect">
+                    <option selected value="Альманах">Альманах</option>
+                    <option value="Бюлетень">Бюлетень</option>
+                    <option value="Газета">Газета</option>
+                    <option value="Журнал">Журнал</option>
+                    <option value="Календар">Календар</option>
+                    <option value="Каталог">Каталог</option>
+                    <option value="Інший">Інший</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-success btn_statement" id="btnLogin">Пошук</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col text-center" style="margin-top: 20px;">
+            <button class="btn btn-success btn_statement"><a <% if (user) {%>href="/profile" <% } else { %> href="/" <% }%>>Повернутись на головну</a></button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script src="./javascripts/index.js"></script>
+
+</body>
+</html>

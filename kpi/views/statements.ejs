@@ -7,47 +7,60 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-    <link rel='stylesheet' href='./stylesheets/main.css' />
+    <link rel='stylesheet' href='./stylesheets/main.css'/>
 </head>
 <body>
-<% include ../views/layout.ejs%>
+<% include ../views/layout.ejs %>
 
 <div class="container">
     <div class="head text-center">
         <h2>Список поданих заяв</h2>
     </div>
     <hr>
-    <div class="justify-content-center">
-        <table>
+    <div class="row">
+        <div class="justify-content-center">
+            <% if(statements.length != 0) {%>
+            <table>
 
-            <tr>
-                <th>ID заяви</th>
-                <th>Дата</th>
-                <th>Статус</th>
-            </tr>
-            {% for entity in facts %}
-            <tr>
-                <td>{{ entity.0 }}</td>
-                <td>
-                    {{ entity.1 }}
-                </td>
-                <td><b>{{ entity.2 }}</b></td>
-                <td><form method="POST">
-                    <input type="hidden" name="id" value="{{ entity.0 }}">
-                    <input type="submit" class="btn btn-success btn_statement" value="Переглянути"></form>
-                </td>
-                <td><form method="POST">
-                    <input type="hidden" name="id" value="{{ entity.0 }}">
-                    <input type="submit" class="btn btn-success btn_modify" value="Модифікувати"></form>
-                </td>
-                <td><form method="POST">
-                    <input type="hidden" name="id" value="{{ entity.0 }}">
-                    <input type="submit" class="btn btn-success btn_delete" value="Видалити"></form>
-                </td>
-            </tr>
-            {% endfor %}
+                <tr>
+                    <th>ID заяви</th>
+                    <th>Дата</th>
+                    <th>Назва видання</th>
+                    <th>Статус</th>
+                </tr>
+                <% statements.forEach(function(statement) { %>
+                <tr>
+                    <td><%=statement._id%></td>
+                    <td>
+                        <%=statement.start_reg_date%>
+                    </td>
+                    <td>
+                        <%=statement.name %>
+                    </td>
+                    <td><b><%= statement.status%></b></td>
+                    <td>
+                        <form method="GET" action="/document/<%=statement._id%>">
+                            <input type="submit" class="btn btn-success btn_statement" value="Переглянути"></form>
+                    </td>
+                    <% if(statement.status != "ACCEPTED") {%>
+                    <td>
+                        <form method="GET" action="/modify_statement/<%=statement._id%>">
+                            <input type="submit" class="btn btn-success btn_modify" value="Модифікувати"></form>
+                    </td>
+                    <%}%>
+                    <td>
+                        <form method="POST" action="/delete_statement" >
+                            <input type="hidden" name="statement_id" value="<%=statement._id%>">
+                            <input type="submit" class="btn btn-success btn_delete" value="Видалити"></form>
+                    </td>
 
-        </table>
+                </tr>
+                <% }); %>
+            </table>
+            <% } else {%>
+            <h2 class="text-center" style="color: black">Немає поданих заяв.</h2>
+            <%}%>
+        </div>
     </div>
 </div>
 

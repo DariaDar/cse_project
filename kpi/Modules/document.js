@@ -2,33 +2,34 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var docSchema = new Schema({
-    _id : mongoose.Schema.Types.ObjectId,
-    id_register : {
-        type : mongoose.Schema.Types.ObjectId,
-        ref : "id_register"
-    },
+    register: String,
     id_founder : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "id_founder"
+        ref : "User"
     },
-    id_media : {
+    type: String,
+    name: String,
+    language: String,
+    sphere: String,
+    readers_category: String,
+    aims: String,
+    theme: String,
+    period: String,
+    paper_size: String,
+    amount: Number,
+    redaction_office: {
         type : mongoose.Schema.Types.ObjectId,
-        ref : "id_media"
+        ref : "Address"
     },
     start_reg_date : Date,
     ready_reg_date : Date,
     status : {
         type: String,
-        enum: ['IN_PROC', 'DELETE', 'SUCCESS'],
-        enum: 'IN_PROC'
-    },
-    doc_info : {
-        document_number : Number,
-        document_series : String
+        default: 'PROCESSED'
     },
     file : String
 });
 
-var DocModel = mongoose.model('docSchema', docSchema);
+var DocModel = mongoose.model('Document', docSchema);
 module.exports = DocModel;
 

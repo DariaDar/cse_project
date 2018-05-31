@@ -2,7 +2,10 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 var addressSchema = new Schema({
-    _id : mongoose.Schema.Types.ObjectId,
+    person: {
+        type : mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     country : String,
     region : String,
     locality : String,
@@ -10,6 +13,6 @@ var addressSchema = new Schema({
     building : String
 });
 
-var AddressModel = mongoose.model('addressSchema', addressSchema);
+var AddressModel = mongoose.model('Address', addressSchema);
 module.exports = AddressModel;
 

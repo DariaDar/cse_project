@@ -4,31 +4,23 @@ const Document = require('./document.js');
 var Sсhema = mongoose.Schema;
 
 var phSchema = new Sсhema({
-    _id : mongoose.Schema.Types.ObjectId,
-    name :{
-        first_name : String,
-        parent_name : String
-    },
+    first_name : String,
+    parent_name : String,
     surname : String,
     person_number : String,
     address : {
         type : mongoose.Schema.Types.ObjectId,
-        ref: 'address'
+        ref: 'Address'
     },
     email : String,
     bank_details : {
-        card_number : Number,
-        owner_name : String,
-        owner_surname : String,
-        cvc_code : Number,
-        card_date : String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bank'
     },
-    passport : {
-        passport_number : Number,
-        passport_series : String
-    }
+    passport_number : Number,
+    passport_series : String
 });
 
-var PhModel = mongoose.model('phSchema', phSchema);
+var PhModel = mongoose.model('Person', phSchema);
 module.exports = PhModel;
 

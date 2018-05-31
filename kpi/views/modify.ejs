@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Увійти</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link rel='stylesheet' href='/stylesheets/main.css' />
+</head>
+<body>
+<% include ../views/layout.ejs%>
+
+<div class="container">
+
+    <div class="row justify-content-md-center">
+        <div class="col-lg">
+            <div class="head">
+                <h1>Модифікувати заяву</h1>
+            </div>
+
+            <div class="form">
+                <form role="form" autocomplete="off" id="loginForm" action="/modify" method="POST">
+                    <input type="hidden" name="statement_id" value="<%=document._id%>">
+                    <input type="hidden" name="address_id" value="<%= address._id%>">
+                    <hr>
+                    <div class="row">
+                        <div class="col-4">
+                            <h5>Реєструючий орган</h5>
+                            <%= document.register%>
+                        </div>
+                        <div class="col-4">
+                            <h5>Дата подачі заяви</h5>
+                            <%= document.start_reg_date%>
+                        </div>
+                        <div class="col-4">
+                            <h5>Статус заяви</h5>
+                            <%= document.status%>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <h4>Вид видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="media_type" class="form-control" value="<%= document.type%>"
+                                   required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>Назва видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="media_name" class="form-control" required value="<%= document.name%>"
+                                   placeholder="">
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>Мова видання.</h4>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <input type="text" name="language" class="form-control" value="<%= document.language%>"
+                                   placeholder="" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>Сфера розповсюдження та категорії читачів</h4>
+                    <div class="form-group row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Cфера розповсюдження</label>
+                                </div>
+                                <div class="col-5">
+                                    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" name="sphere"
+                                            id="inlineFormCustomSelect">
+                                        <option value="Місцева">Місцева</option>
+                                        <option value="Регіональна">Регіональна</option>
+                                        <option value="Загальнодержавна">Загальнодержавна</option>
+                                        <option value="Зарубіжна">Зарубіжна</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" name="readers_category" value="<%= document.readers_category%>"
+                                   placeholder="Категорії читачів" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>Програмні цілі.</h4>
+                    <div class="form-group row">
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="mr-sm-2" for="inlineFormCustomSelect">Основні принципи</label>
+                                </div>
+                                <div class="col-8 ">
+                                    <textarea class="form-control" name="prinzipy" rows="4" value="<%= document.aims%>"
+                                              required></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <input type="text" class="form-control" name="theme" value="<%= document.theme%>"
+                                   placeholder="Тематична спрямованість" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Періодичність випуску</label>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           value="Раз на рік" id="year" checked>
+                                    Раз на рік
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           id="month" value=" Раз на місяць">
+                                    Раз на місяць
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period"
+                                           id="week" value="Раз на тиждень">
+                                    Раз на тиждень
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="period" id="day"
+                                           value="Раз на день">
+                                    Раз на день
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Формат</label>
+                            <div class="row">
+                                <div class="col-5">
+                                    <!--SIZE-->
+                                    <label>Розмір аркуша</label>
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" name="size_sheet" class="form-control" required value="<%= document.paper_size%>">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Обсяг видання (к-сть сторінок):</label>
+                            <input type="text" name="page_count" class="form-control" required value="<%= document.amount%>">
+                        </div>
+                    </div>
+                    <hr>
+                    <h4>6. Місцезнаходження редакції</h4>
+                    <div class="row">
+                        <div class="col-4">
+                            <input type="text" name="media_country" class="form-control" placeholder="Країна" required value="<%= address.country%>">
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_region" class="form-control" placeholder="Область" required value="<%= address.region%>">
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_locality" class="form-control" placeholder="Населений пункт" value="<%= address.locality%>"
+                                   required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <input type="text" name="media_street" class="form-control" placeholder="Вулиця" required value="<%= address.street%>">
+                        </div>
+                        <div class="col-4">
+                            <input type="text" name="media_building" class="form-control" placeholder="Будинок" value="<%= address.building%>"
+                                   required>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3>Прикріпити документ за вимогою реєструючого органу</h3>
+                    <div class="form-group row">
+                        <div class="custom-file col-12">
+                            <input type="file" name="document" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label" for="customFile">Оберіть файл</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-group row justify-content-center">
+                        <button type="submit" id="btn_document" class="btn btn-success">Змінити заяву</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+
+<script>
+    $("#target input").prop("disabled", true);
+</script>
+
+
+
+</body>
+</html>

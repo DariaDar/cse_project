@@ -1,89 +1,130 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <title><%= title %></title>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
-            integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-      <link rel='stylesheet' href='./stylesheets/main.css' />
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=cyrillic"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel='stylesheet' href='./stylesheets/main.css'/>
+</head>
+<body>
 
-  <!--<% include ../views/layout.ejs %>-->
-
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="padding-top: 30vh">
-              <div class="container">
-                  <div class="col head text-center">
-                      <h1><b>Державний реєстр</b></h1>
-                      <h2>друкованих засобів масової інформації</h2>
-                  </div>
-              </div>
-          </div>
-          <div class="carousel-item" style="padding-top: 30vh">
-              <div class="container">
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active" style="padding-top: 30vh">
+            <div class="container">
+                <div class="col head text-center">
+                    <h1><b>Державний реєстр</b></h1>
+                    <h2>друкованих засобів масової інформації</h2>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" style="padding-top: 30vh">
+            <div class="container">
                 <div class="row">
                     <div class="col-6">
-                        <button class="btn btn-success btn_statement"><a href="/reestr">Перейти до реєстру</a></button>
+                        <h1 class="offer__title head">
+                            Перейти до рєстру
+                        </h1>
+                        <p class="offer__text">
+                            <b>Реєстр</b> - це електронна база даних, яка містить інформацію про всі друковані засоби
+                            масової інформації, додатки до друкованих засобів масової інформації у вигляді видань
+                            газетного та журнального типу, що видаються на території України, незалежно від сфери
+                            розповсюдження, тиражу і способу їх виготовлення та інформаційні агентства як суб'єкти
+                            інформаційної діяльності, що засновуються та/або діють в Україні.
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success btn_statement"><a href="/register">Продовжити</a>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-6">
-
+                    <div class="col-6 text-center">
+                        <img src="../images/reestr.png" alt="art1" class="art1" style="max-height: 30vh;">
                     </div>
                 </div>
-              </div>
-          </div>
-          <div class="carousel-item" style="padding-top: 30vh">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-6">
-                          <button class="btn btn-success btn_statement"><a href="/login">Увійти до профілю</a></button>
-                      </div>
-                      <div class="col-6">
+            </div>
+        </div>
+        <div class="carousel-item" style="padding-top: 30vh">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="offer__title head">
+                            Увійти до власного профілю
+                        </h1>
+                        <p class="offer__text">
+                            Авторизуйтеся, щоб отримати доступ до всіх функцій ресурсу.
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success btn_statement"><a <%if(!user) {%>href="/login" <% } else {%> href="/users/profile/<%=user._id%>" <%}%>>Продовжити</a></button>
+                            </div>
 
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="carousel-item" style="padding-top: 30vh">
-              <div class="container">
-                  <div class="row">
-                      <div class="col-6">
-                          <button class="btn btn-success btn_statement"><a href="/registration">Зареєструватись</a></button>
-                      </div>
-                      <div class="col-6">
+                        </div>
+                    </div>
+                    <div class="col-6 text-center">
+                        <img src="../images/use.png" alt="art1" class="art1" style="max-height: 30vh;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item" style="padding-top: 30vh">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h1 class="offer__title head">
+                            Зареєструватись
+                        </h1>
+                        <p class="offer__text">
+                            Зареєструйтеся, щоб отримати доступ до всіх функцій ресурсу.
+                        </p>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-success btn_statement"><a href="/registration">Продовжити</a>
+                                </button>
+                            </div>
 
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-      </a>
-  </div>
+                        </div>
+
+                    </div>
+                    <div class="col-6 text-center">
+                        <img src="../images/Register.png" alt="art1" class="art1" style="max-height: 30vh;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-          integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-          crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-          crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
-          integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
-          crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+        integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.8.0.min.js"></script>
 
-  </body>
+</body>
 </html>

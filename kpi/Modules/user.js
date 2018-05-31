@@ -1,21 +1,48 @@
 var mongoose = require('mongoose');
-const Document = require('./document.js');
+var crypto = require('crypto');
+
 
 var Sсhema = mongoose.Schema;
 var userSchema = new Sсhema({
-    _id : mongoose.Schema.Types.ObjectId,
     login : String,
     password : String,
     type :{
         type : String,
-        enum : ['ADMIN', 'REGISTER', 'GOV_PERSON', 'PH_PRSON']
+        enum : ['gov', 'physical']
     },
-    id_person:[ {
+    id_person: {
         type : mongoose.Schema.Types.ObjectId,
-        ref: 'id_person'
-    }]
+        ref: 'GovPerson' || 'Person'
+    }
 });
 
-var UserModel = mongoose.model('userSchema', userSchema);
+
+var salt = 'OFH725%okdIn&';
+
+
+function hash(str, key) {
+    return crypto.createHmac('sha1', key)
+        .update(new Buffer(str, 'utf-8'))
+        .digest('hex');
+}
+
+userSchema.methods.checkUsername = function(username){
+    return this.login === username;
+}
+
+userSchema.virtual('password_temp')
+    .set(function(password){
+        this._plainPassword = password;
+        this.password = hash(password, salt);
+    })
+    .get(function(){
+        return this._plainPassword;
+    });
+
+userSchema.methods.checkPassword = function(password){
+    return this.password === hash(password, salt);
+}
+
+var UserModel = mongoose.model('User', userSchema);
 module.exports = UserModel;
 

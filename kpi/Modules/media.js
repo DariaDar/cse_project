@@ -2,18 +2,18 @@ var mongoose = require('mongoose');
 
 var Sсhema = mongoose.Schema;
 var mediaSchema = new Sсhema({
-    _id : mongoose.Schema.Types.ObjectId,
-    type : String,
-    title : String,
-    language : String,
-    sphere : String,
-    goals : String,
-    address : {
+    founder: String,
+    number: Number,
+    register: String,
+    date: Date,
+    document: {
         type : mongoose.Schema.Types.ObjectId,
-        ref: 'address'
-    }
+        ref: 'Document'
+    },
+    type: String,
+    name: String,
 });
 
-var MediaModel = mongoose.model('mediaSchema', mediaSchema);
+var MediaModel = mongoose.model('Media', mediaSchema);
 module.exports = MediaModel;
 
